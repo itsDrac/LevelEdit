@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfahqmly53tx5"]
+
+[ext_resource type="PackedScene" uid="uid://dbq1s5ioagfea" path="res://Scenes/LevelEditor/Base.tscn" id="1_fem5k"]
+[ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/Gimbal.gd" id="2_ofqe5"]
+[ext_resource type="PackedScene" uid="uid://b4ygqbgk8fcpc" path="res://Scenes/LevelEditor/GUI.tscn" id="2_xa16b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpfge"]
+sky_top_color = Color(0.780392, 0.639216, 0.494118, 1)
+ground_bottom_color = Color(0.0627451, 0.360784, 0.603922, 1)
+ground_horizon_color = Color(0.337255, 0.741176, 0.905882, 1)
+
+[sub_resource type="Sky" id="Sky_5x2xg"]
+sky_material = SubResource("ProceduralSkyMaterial_hpfge")
+
+[sub_resource type="Environment" id="Environment_jtycx"]
+background_mode = 2
+sky = SubResource("Sky_5x2xg")
+ssao_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uuxa"]
+albedo_color = Color(0.92549, 0.121569, 0.0941176, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ndtyr"]
+material = SubResource("StandardMaterial3D_0uuxa")
+radius = 0.125
+height = 0.25
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.992431, -0.00185476, 0.122788, 0.0861746, 0.701836, 0.707107, -0.0874885, 0.712336, -0.696364, 0, 7, -20)
+visible = false
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jtycx")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Gimbal" type="Node" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("2_ofqe5")
+
+[node name="X" type="Marker3D" parent="SubViewportContainer/SubViewport/Gimbal"]
+
+[node name="Y" type="Marker3D" parent="SubViewportContainer/SubViewport/Gimbal/X"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Gimbal/X/Y"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1, 6)
+
+[node name="Control" parent="." instance=ExtResource("2_xa16b")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ndtyr")
+
+[node name="Base" parent="." instance=ExtResource("1_fem5k")]
