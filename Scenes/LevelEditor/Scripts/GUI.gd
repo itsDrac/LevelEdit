@@ -31,6 +31,3 @@ func _input(event):
 	elif event.is_action_released("right"):
 		d.add_theme_stylebox_override("panel", unpressedStyle)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4ygqbgk8fcpc"]
+[gd_scene load_steps=5 format=3 uid="uid://b4ygqbgk8fcpc"]
 
 [ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/GUI.gd" id="1_6skbw"]
 [ext_resource type="StyleBox" uid="uid://djoquo4la0lwv" path="res://Scenes/LevelEditor/unpressed_button.stylebox" id="2_vc14r"]
 [ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/TabContainer.gd" id="3_84i8g"]
-[ext_resource type="PackedScene" uid="uid://da44wdh01p7yj" path="res://Scenes/LevelEditor/meshlib_panel.tscn" id="4_dtep8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cao3h"]
 bg_color = Color(0.933333, 0.933333, 0.933333, 0.784314)
 
-[node name="Control" type="Control"]
+[node name="GUI" type="Control"]
 layout_mode = 3
 anchor_top = 0.763
 anchor_right = 1.0
@@ -83,6 +82,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_84i8g")
 pathToMeshlib = "res://Scenes/LevelEditor/Assests/Scenes/Platformer.meshlib"
-
-[node name="MeshlibPanel" parent="PanelContainer/MarginContainer/HBoxContainer/TabContainer" instance=ExtResource("4_dtep8")]
-layout_mode = 2
