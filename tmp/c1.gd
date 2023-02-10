@@ -1,5 +1,6 @@
 extends Control
-class_name Child
+class_name Child # Not required.
+
 @onready var hbox = $HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
@@ -9,7 +10,7 @@ func _ready():
 
 func add_button(id):
 	var b = Button.new()
-	b.text = "Button" + str(id)
+	b.text = "Button " + str(id)
 	hbox.add_child(b)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
