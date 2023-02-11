@@ -10,9 +10,12 @@ func _ready():
 
 func add_button(id):
 	var b = Button.new()
+	b.name = "b"+str(id)
 	b.text = "Button " + str(id)
 	hbox.add_child(b)
+	b.pressed.connect(pressed)
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func pressed():
+	print("button, pressed")
+

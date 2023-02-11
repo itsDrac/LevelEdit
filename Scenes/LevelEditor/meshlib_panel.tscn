@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/meshlib_panel.gd" id="1_mcix1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vdd0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l5fh"]
 bg_color = Color(0.933333, 0.933333, 0.933333, 0.784314)
 
 [node name="MeshlibPanel" type="Panel"]
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 0.185
 offset_bottom = -199.8
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5vdd0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1l5fh")
 script = ExtResource("1_mcix1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
