@@ -1,11 +1,21 @@
 extends Panel
 
+@export_file("*meshlib") var pathToMeshlib: String
 @onready var hbox = $MarginContainer/ScrollContainer/HBoxContainer
+var meshlib: MeshLibrary 
+
 var ico = load("res://icon.svg")
 signal texture_button_clicked (id: int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print("in ready")
+#	name = pathToMeshlib.get_file().replace(".meshlib","").capitalize()
+#	defin_meshlib(meshlib)
+
+func defin_meshlib(lib: MeshLibrary):
+	print(lib)
+	for mesh in lib.get_item_list():
+		add_preview(mesh, lib.get_item_preview(mesh))
 
 func add_preview(id: int, texture: Texture2D):
 	print("here")
@@ -16,10 +26,6 @@ func add_preview(id: int, texture: Texture2D):
 	tb.stretch_mode = TextureButton.STRETCH_SCALE
 	tb.texture_normal = texture
 	hbox.add_child(tb)
-	tb.connect("pressed",func (): texture_button_click(id))
+	tb.pressed.connect(func(): texture_button_clicked.emit(id))
 	
-	
-
-func texture_button_click(id):
-	print(id," Texture Button clicked")
 

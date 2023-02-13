@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://da44wdh01p7yj"]
+[gd_scene load_steps=3 format=3 uid="uid://bew805xd3sxdv"]
 
-[ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/meshlib_panel.gd" id="1_mcix1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l5fh"]
-bg_color = Color(0.933333, 0.933333, 0.933333, 0.784314)
+[ext_resource type="StyleBox" uid="uid://bkg0jgp0nu7b0" path="res://Scenes/LevelEditor/Assests/Resources/panal.stylebox" id="1_40o2q"]
+[ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/MeshlibPanel.gd" id="1_qkyq4"]
 
 [node name="MeshlibPanel" type="Panel"]
 custom_minimum_size = Vector2(0, 200)
@@ -12,8 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 0.185
 offset_bottom = -199.8
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1l5fh")
-script = ExtResource("1_mcix1")
+theme_override_styles/panel = ExtResource("1_40o2q")
+script = ExtResource("1_qkyq4")
+pathToMeshlib = "res://Scenes/LevelEditor/Assests/Resources/Platformer.meshlib"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,7 +28,10 @@ theme_override_constants/margin_bottom = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
