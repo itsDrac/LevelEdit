@@ -8,17 +8,17 @@ var ico = load("res://icon.svg")
 signal texture_button_clicked (id: int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("in ready")
+	pass
 #	name = pathToMeshlib.get_file().replace(".meshlib","").capitalize()
 #	defin_meshlib(meshlib)
 
 func defin_meshlib(lib: MeshLibrary):
-	print(lib)
+#	print(lib)
 	for mesh in lib.get_item_list():
 		add_preview(mesh, lib.get_item_preview(mesh))
 
 func add_preview(id: int, texture: Texture2D):
-	print("here")
+#	print("here")
 	var tb = TextureButton.new()
 	tb.custom_minimum_size = Vector2(128,128)
 #	tb.toggle_mode = true

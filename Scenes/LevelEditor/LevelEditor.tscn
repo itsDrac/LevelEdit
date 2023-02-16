@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpokhlq5xuxu2"]
+[gd_scene load_steps=11 format=3 uid="uid://bpokhlq5xuxu2"]
 
 [ext_resource type="PackedScene" uid="uid://dpa5ol3jifm8m" path="res://Scenes/LevelEditor/Base.tscn" id="1_fem5k"]
 [ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/MainLayer.gd" id="1_vjqla"]
 [ext_resource type="Script" path="res://Scenes/LevelEditor/Scripts/Gimbal.gd" id="2_ofqe5"]
 [ext_resource type="PackedScene" uid="uid://cr5q2pl1b3k5i" path="res://Scenes/LevelEditor/GUI.tscn" id="2_xa16b"]
+[ext_resource type="MeshLibrary" uid="uid://c3deucj1eegnh" path="res://Scenes/LevelEditor/Assests/MeshLibs/Platformer.meshlib" id="5_gkfqh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpfge"]
 sky_top_color = Color(0.780392, 0.639216, 0.494118, 1)
@@ -72,3 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ndtyr")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("5_gkfqh")

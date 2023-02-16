@@ -1,11 +1,14 @@
 extends Control
 
 #@onready var w: Panel = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/W
-@onready var w: Button = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/WButton
-@onready var a: Button = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/AButton
-@onready var s: Button = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/SButton
-@onready var d: Button = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/DButton 
-@onready var z: SpinBox = $PanelContainer/MarginContainer/HBoxContainer/GridContainer/Z
+@onready var r: Button = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/RButton
+@onready var w: Button = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/WButton
+@onready var a: Button = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/AButton
+@onready var s: Button = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/SButton
+@onready var d: Button = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/DButton 
+@onready var z: SpinBox = $PanelContainer/MarginContainer/HBoxContainer/MoveKeys/Z
+@onready var set = $PanelContainer/MarginContainer/HBoxContainer/FunctionKeys/SetButton
+
 @onready var libSelectPanel = $SelectWindow
 @onready var meshlibPanel = $PanelContainer/MarginContainer/HBoxContainer/MeshlibPanel
 
@@ -13,14 +16,14 @@ var selectedMeshlib: MeshLibrary
 
 signal meshlib_selected(lib: MeshLibrary)
 signal key_pressed(key: StringName)
-
+signal z_value_changed(value)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	libSelectPanel.mesh_selected.connect(lib_selected)
+	z.value_changed.connect(func(value): z_value_changed.emit(value))
 
 func _input(event):
 	if event.is_action_pressed("forward"):
-#		w.add_theme_stylebox_override("panel", pressedStyle)
 		w.button_pressed = true
 		key_pressed.emit("w")
 	elif event.is_action_pressed("backward"):
@@ -32,9 +35,14 @@ func _input(event):
 	elif event.is_action_pressed("right"):
 		d.button_pressed = true
 		key_pressed.emit("d")
+	elif event.is_action_pressed("enter"):
+		set.button_pressed = true
+		key_pressed.emit("set")
+	elif event.is_action_pressed("reload"):
+		r.button_pressed = true
+		key_pressed.emit("r")
 	
 	if event.is_action_released("forward"):
-#		w.add_theme_stylebox_override("panel", unpressedStyle)
 		w.button_pressed = false
 	elif event.is_action_released("backward"):
 		s.button_pressed = false
@@ -42,6 +50,10 @@ func _input(event):
 		a.button_pressed = false
 	elif event.is_action_released("right"):
 		d.button_pressed = false
+	elif event.is_action_released("enter"):
+		set.button_pressed = false
+	elif event.is_action_released("reload"):
+		r.button_pressed = false
 
 func lib_selected(name):
 	selectedMeshlib = load(libSelectPanel.MESHLIBPATH+name+".meshlib")
