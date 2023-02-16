@@ -37,7 +37,6 @@ script = ExtResource("1_vjqla")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.992431, -0.00185476, 0.122788, 0.0861746, 0.701836, 0.707107, -0.0874885, 0.712336, -0.696364, 0, 7, -20)
-visible = false
 light_energy = 2.0
 shadow_enabled = true
 

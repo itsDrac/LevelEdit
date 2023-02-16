@@ -52,5 +52,3 @@ func gridmap_mesh_change(mesh: MeshLibrary):
 	previewGridMap.mesh_library = mesh
 	finalGridMap.mesh_library = mesh
 
-func z_value_change(value: int):
-	pass

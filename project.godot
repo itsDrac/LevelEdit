@@ -24,7 +24,11 @@ window/size/window_height_override=920
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/leveleditor/plugin.cfg")
+enabled=PackedStringArray()
+
+[gui]
+
+theme/custom="res://Scenes/LevelEditor/Assests/Resources/LevelEdit.theme"
 
 [input]
 
